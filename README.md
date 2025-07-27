@@ -68,7 +68,7 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Saikrishnach4/markopolo-ai
-   cd url-shortener
+   cd markopolo-ai
    ```
 
 2. **Install dependencies**
@@ -98,19 +98,6 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
    # Production mode
    npm run build
    npm run start:prod
-   ```
-
-### Method 2: Docker (Recommended)
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Saikrishnach4/markopolo-ai
-   cd url-shortener
-   ```
-
-2. **Run with Docker Compose**
-   ```bash
-   docker-compose up --build
    ```
 
 3. **Access the application**
