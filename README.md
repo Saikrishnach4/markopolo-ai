@@ -27,6 +27,18 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
 
 **Junior Backend Engineering Assignment - Markopolo.ai**
 
+## 🚀 Quick Start
+
+**Live Demo**: [https://markopolo-ai.onrender.com](https://markopolo-ai.onrender.com)
+
+**API Documentation**: [https://markopolo-ai.onrender.com/docs](https://markopolo-ai.onrender.com/docs)
+
+**Test the API**:
+1. Visit the Swagger docs
+2. Register a new user or login
+3. Use the "Authorize" button with your JWT token
+4. Test the URL shortening endpoints
+
 ## Features
 
 - **URL Shortening**: Convert long URLs to short, manageable links
@@ -186,7 +198,7 @@ Authorization: Bearer <your-jwt-token>
 ```json
 {
   "originalUrl": "https://www.example.com/a-very-long-url-to-shorten",
-  "shortUrl": "http://localhost:3000/r/abc123"
+  "shortUrl": "https://markopolo-ai.onrender.com/r/abc123"
 }
 ```
 
@@ -217,7 +229,7 @@ Authorization: Bearer <your-jwt-token>
 ```json
 {
   "originalUrl": "https://www.example.com/a-very-long-url-to-shorten",
-  "shortUrl": "http://localhost:3000/r/abc123",
+  "shortUrl": "https://markopolo-ai.onrender.com/r/abc123",
   "clicks": 15
 }
 ```
@@ -226,7 +238,8 @@ Authorization: Bearer <your-jwt-token>
 
 Once the application is running, you can access the interactive Swagger documentation at:
 
-**http://localhost:3000/docs**
+**Local Development**: http://localhost:3000/docs
+**Production**: https://markopolo-ai.onrender.com/docs
 
 The documentation includes:
 - All available endpoints
@@ -370,8 +383,20 @@ This project was completed as part of the Junior Backend Engineering assignment 
 ### Video Explanation
 [Link to video explanation - Add your Loom/Google Drive link here]
 
+**Note**: Please create a short video (2-3 minutes) explaining:
+- Project overview and features
+- How to use the API
+- Authentication flow
+- Bonus features implemented
+
 ### Deployed URL
-[Add your deployed URL here if you deploy the application]
+**🌐 Live Application**: [https://markopolo-ai.onrender.com](https://markopolo-ai.onrender.com)
+
+**📚 API Documentation**: [https://markopolo-ai.onrender.com/docs](https://markopolo-ai.onrender.com/docs)
+
+**🔐 Test Credentials** (for demo purposes):
+- Email: `demo@example.com`
+- Password: `password123`
 
 ### Bonus Features Completed
 - ✅ **Dockerization**: Dockerfile and docker-compose.yml for easy deployment
