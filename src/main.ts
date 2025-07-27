@@ -24,6 +24,17 @@ async function bootstrap() {
     .setDescription('A RESTful API for shortening URLs with analytics')
     .setVersion('1.0')
     .addTag('URL Shortener')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Enter JWT token',
+        in: 'header',
+      },
+      'JWT-auth',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

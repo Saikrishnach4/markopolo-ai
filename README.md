@@ -51,6 +51,8 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
 
 ## Installation
 
+### Method 1: Local Development
+
 1. **Clone the repository**
    ```bash
    git clone https://github.com/yourusername/url-shortener.git
@@ -69,6 +71,7 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
    NODE_ENV=development
    MONGODB_URI=mongodb://localhost:27017/url-shortener
    BASE_URL=http://localhost:3000
+   JWT_SECRET=your-super-secret-jwt-key
    ```
 
 4. **Start MongoDB**
@@ -85,12 +88,91 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
    npm run start:prod
    ```
 
+### Method 2: Docker (Recommended)
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/url-shortener.git
+   cd url-shortener
+   ```
+
+2. **Run with Docker Compose**
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Access the application**
+   - **Application**: http://localhost:3000
+   - **Swagger Docs**: http://localhost:3000/docs
+   - **MongoDB**: localhost:27017
+
 ## API Endpoints
 
-### 1. Shorten URL
+### Authentication Endpoints
+
+#### 1. Register User
+**POST** `/auth/register`
+
+Register a new user account.
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "name": "John Doe"
+}
+```
+
+**Response (201 Created):**
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "_id": "user_id",
+    "email": "user@example.com",
+    "name": "John Doe",
+    "createdAt": "2025-07-27T06:35:26.431Z"
+  }
+}
+```
+
+#### 2. Login User
+**POST** `/auth/login`
+
+Login with existing credentials.
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "_id": "user_id",
+    "email": "user@example.com",
+    "name": "John Doe"
+  }
+}
+```
+
+### URL Management Endpoints
+
+#### 3. Shorten URL (Requires Authentication)
 **POST** `/api/shorten`
 
 Shortens a long URL to a short, manageable link.
+
+**Headers:**
+```
+Authorization: Bearer <your-jwt-token>
+```
 
 **Request Body:**
 ```json
@@ -108,7 +190,7 @@ Shortens a long URL to a short, manageable link.
 }
 ```
 
-### 2. Redirect to Original URL
+#### 4. Redirect to Original URL
 **GET** `/r/:shortCode`
 
 Redirects to the original URL and increments the click counter.
@@ -118,10 +200,15 @@ Redirects to the original URL and increments the click counter.
 
 **Response:** 302 Redirect to the original URL
 
-### 3. Get URL Analytics
+#### 5. Get URL Analytics (Requires Authentication)
 **GET** `/api/stats/:shortCode`
 
 Retrieves analytics for a shortened URL.
+
+**Headers:**
+```
+Authorization: Bearer <your-jwt-token>
+```
 
 **Parameters:**
 - `shortCode` (string): The short code for the URL
@@ -287,7 +374,12 @@ This project was completed as part of the Junior Backend Engineering assignment 
 [Add your deployed URL here if you deploy the application]
 
 ### Bonus Features Completed
-- None (Core requirements only)
+- ✅ **Dockerization**: Dockerfile and docker-compose.yml for easy deployment
+- ✅ **Authentication & API Token Management**: JWT-based user authentication
+  - User registration and login endpoints
+  - Protected API endpoints requiring authentication
+  - User association with created URLs
+  - Secure password hashing with bcrypt
 
 ## Support
 

@@ -18,6 +18,7 @@ export class UrlsService {
 
   async createShortUrl(
     createUrlDto: CreateUrlDto,
+    userId?: string,
   ): Promise<{ originalUrl: string; shortUrl: string }> {
     const { url, customCode } = createUrlDto;
 
@@ -43,6 +44,7 @@ export class UrlsService {
     const newUrl = new this.urlModel({
       originalUrl: url,
       shortCode,
+      userId: userId || null,
     });
 
     await newUrl.save();

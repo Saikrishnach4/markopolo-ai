@@ -7,6 +7,8 @@ import {
   Res,
   HttpStatus,
   ValidationPipe,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { Response } from 'express';
 import {
@@ -15,10 +17,12 @@ import {
   ApiResponse,
   ApiParam,
   ApiBody,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 import { UrlsService } from './urls.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { UrlResponseDto, UrlStatsResponseDto } from './dto/url-response.dto';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @ApiTags('URL Shortener')
 @Controller()
@@ -26,7 +30,9 @@ export class UrlsController {
   constructor(private readonly urlsService: UrlsService) {}
 
   @Post('api/shorten')
-  @ApiOperation({ summary: 'Shorten a URL' })
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('JWT-auth')
+  @ApiOperation({ summary: 'Shorten a URL (Requires Authentication)' })
   @ApiBody({ type: CreateUrlDto })
   @ApiResponse({
     status: 201,
@@ -41,10 +47,15 @@ export class UrlsController {
     status: 400,
     description: 'Invalid URL format',
   })
+  @ApiResponse({
+    status: 401,
+    description: 'Unauthorized - Invalid or missing token',
+  })
   async shortenUrl(
     @Body(new ValidationPipe()) createUrlDto: CreateUrlDto,
+    @Request() req,
   ): Promise<UrlResponseDto> {
-    return this.urlsService.createShortUrl(createUrlDto);
+    return this.urlsService.createShortUrl(createUrlDto, req.user.userId);
   }
 
   @Get('r/:shortCode')
@@ -71,7 +82,9 @@ export class UrlsController {
   }
 
   @Get('api/stats/:shortCode')
-  @ApiOperation({ summary: 'Get URL analytics' })
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('JWT-auth')
+  @ApiOperation({ summary: 'Get URL analytics (Requires Authentication)' })
   @ApiParam({
     name: 'shortCode',
     description: 'The short code for the URL',
@@ -86,8 +99,13 @@ export class UrlsController {
     status: 404,
     description: 'URL not found',
   })
+  @ApiResponse({
+    status: 401,
+    description: 'Unauthorized - Invalid or missing token',
+  })
   async getUrlStats(
     @Param('shortCode') shortCode: string,
+    @Request() req,
   ): Promise<UrlStatsResponseDto> {
     return this.urlsService.getUrlStats(shortCode);
   }

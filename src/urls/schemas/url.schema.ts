@@ -14,6 +14,9 @@ export class Url {
   @Prop({ default: 0 })
   clicks: number;
 
+  @Prop({ type: String, ref: 'User' })
+  userId: string;
+
   @Prop({ default: Date.now })
   createdAt: Date;
 }
