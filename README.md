@@ -364,9 +364,6 @@ CMD ["npm", "run", "start:prod"]
 
 This project was completed as part of the Junior Backend Engineering assignment for Markopolo.ai.
 
-### Video Explanation
-[Link to video explanation - Add your Loom/Google Drive link here]
-
 **Note**: Please create a short video (2-3 minutes) explaining:
 - Project overview and features
 - How to use the API
