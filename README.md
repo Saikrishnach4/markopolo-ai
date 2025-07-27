@@ -25,6 +25,8 @@
 
 A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and Mongoose.
 
+**Junior Backend Engineering Assignment - Markopolo.ai**
+
 ## Features
 
 - **URL Shortening**: Convert long URLs to short, manageable links
@@ -51,7 +53,7 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/yourusername/url-shortener.git
    cd url-shortener
    ```
 
@@ -273,6 +275,19 @@ CMD ["npm", "run", "start:prod"]
 ## License
 
 This project is licensed under the MIT License.
+
+## Assignment Submission
+
+This project was completed as part of the Junior Backend Engineering assignment for Markopolo.ai.
+
+### Video Explanation
+[Link to video explanation - Add your Loom/Google Drive link here]
+
+### Deployed URL
+[Add your deployed URL here if you deploy the application]
+
+### Bonus Features Completed
+- None (Core requirements only)
 
 ## Support
 
