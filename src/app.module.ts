@@ -14,7 +14,7 @@ import { UrlsModule } from './urls/urls.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        const uri = configService.get<string>('MONGODB_URI') || 'mongodb+srv://saikrishna:saikrishna@cluster0.gzmbc46.mongodb.net/url-shortener?retryWrites=true&w=majority&appName=Cluster0';
+        const uri = configService.get<string>('MONGODB_URI');
         console.log('MongoDB URI:', uri);
         return { uri };
       },
