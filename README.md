@@ -67,7 +67,7 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/url-shortener.git
+   git clone https://github.com/Saikrishnach4/markopolo-ai
    cd url-shortener
    ```
 
@@ -104,7 +104,7 @@ A RESTful API for shortening URLs with analytics built with NestJS, MongoDB, and
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/url-shortener.git
+   git clone https://github.com/Saikrishnach4/markopolo-ai
    cd url-shortener
    ```
 
